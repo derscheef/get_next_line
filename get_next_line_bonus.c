@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yscheef <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yscheef <yscheef@student.42vienna.at>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:46:43 by yscheef           #+#    #+#             */
-/*   Updated: 2023/01/23 13:48:09 by yscheef          ###   ########.fr       */
+/*   Updated: 2023/06/21 16:35:51 by yscheef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,18 @@ char	*remain(char *text, int i)
 
 char	*get_next_line(int fd)
 {
-	static char		*text;
+	static char		*text[4096];
 	char			*out;
 	unsigned int	i;
 
 	i = 0;
-	text = reader(fd, text);
+	text[fd] = reader(fd, text);
 	if (text == NULL)
 		return (NULL);
 	out = textreturn(text);
 	while (text[i] != '\n' && text[i] != '\0')
 		i++;
-	text = remain(text, i);
+	text[fd] = remain(text, i);
 	return (out);
 }
 
