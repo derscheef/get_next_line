@@ -6,7 +6,7 @@
 /*   By: yscheef <yscheef@student.42vienna.at>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:46:43 by yscheef           #+#    #+#             */
-/*   Updated: 2023/06/21 16:35:51 by yscheef          ###   ########.fr       */
+/*   Updated: 2023/06/21 16:40:52 by yscheef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ char	*get_next_line(int fd)
 	unsigned int	i;
 
 	i = 0;
-	text[fd] = reader(fd, text);
-	if (text == NULL)
+	text[fd] = reader(fd, text[fd]);
+	if (text[fd] == NULL)
 		return (NULL);
-	out = textreturn(text);
-	while (text[i] != '\n' && text[i] != '\0')
+	out = textreturn(text[fd]);
+	while (text[fd][i] != '\n' && text[fd][i] != '\0')
 		i++;
-	text[fd] = remain(text, i);
+	text[fd] = remain(text[fd], i);
 	return (out);
 }
 
