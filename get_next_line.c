@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yscheef <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yscheef <yscheef@student.42vienna.at>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:46:43 by yscheef           #+#    #+#             */
-/*   Updated: 2023/01/23 13:48:09 by yscheef          ###   ########.fr       */
+/*   Updated: 2023/06/21 17:35:20 by yscheef          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	*get_next_line(int fd)
 	unsigned int	i;
 
 	i = 0;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	text = reader(fd, text);
 	if (text == NULL)
 		return (NULL);
